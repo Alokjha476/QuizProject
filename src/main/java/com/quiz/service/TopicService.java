@@ -1,0 +1,35 @@
+package com.quiz.service;
+
+import com.quiz.entity.Topic;
+import com.quiz.repository.TopicRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class TopicService {
+    @Autowired
+    private TopicRepository topicRepository;
+
+    public int AddTopic(Topic topic){
+        return topicRepository.addTopic(topic);
+    }
+
+    public Topic findTopicById(int id){
+        return topicRepository.findTopicById(id);
+
+    }
+    public void updateTopic(Topic topic){
+        topicRepository.updateTopic(topic);
+    }
+
+    public void deleteTopic(Integer id){
+        topicRepository.deleteTopic(id);
+
+    }
+
+    public List<Topic> getAllTopic(){
+        return topicRepository.getAll();
+    }
+}
