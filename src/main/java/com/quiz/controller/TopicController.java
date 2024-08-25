@@ -15,34 +15,32 @@ public class TopicController {
     @Autowired
     private TopicService topicService;
 
-    @PostMapping
+    @PostMapping("/add")
     public ResponseEntity<Object> add(@RequestBody Topic topic) {
-        topicService.AddTopic(topic);
-        return new ResponseEntity<>("Topic created", HttpStatus.OK);
+        topicService.addTopic(topic);
+        return new ResponseEntity<>(topic, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/by_id/{id}")
     public ResponseEntity<Object> findById(@PathVariable Integer id) {
         Topic topic = topicService.findTopicById(id);
         return new ResponseEntity<>(topic, HttpStatus.OK);
-
-
     }
-    @GetMapping
-    public ResponseEntity<Object> getAllTopic(){
+
+    @GetMapping("/get")
+    public ResponseEntity<Object> getAllTopic() {
         List<Topic> topicList = topicService.getAllTopic();
         return new ResponseEntity<>(topicList, HttpStatus.OK);
-
     }
 
-    @PutMapping
+    @PutMapping("/update")
     public ResponseEntity<Object> update(@RequestBody Topic topic) {
         topicService.updateTopic(topic);
         return new ResponseEntity<>("Update Successfully", HttpStatus.OK);
 
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Object> delete(@PathVariable Integer id) {
         topicService.deleteTopic(id);
         return new ResponseEntity<>("Topic deleted", HttpStatus.OK);

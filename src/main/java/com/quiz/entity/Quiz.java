@@ -6,6 +6,6 @@ import lombok.Data;
 public class Quiz {
     private Integer id;
     private String title;
-    private Integer topic_id;
-    private Integer max_score;
+    private Integer topicId;
+    private Integer maxScore;
 }

@@ -5,6 +5,7 @@ import com.quiz.repository.TopicRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigInteger;
 import java.util.List;
 
 @Service
@@ -12,8 +13,8 @@ public class TopicService {
     @Autowired
     private TopicRepository topicRepository;
 
-    public int AddTopic(Topic topic){
-        return topicRepository.addTopic(topic);
+    public void addTopic(Topic topic){
+        topicRepository.addTopic(topic);
     }
 
     public Topic findTopicById(int id){

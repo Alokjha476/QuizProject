@@ -2,11 +2,8 @@ package com.quiz.entity;
 
 import lombok.Data;
 
-import java.util.List;
-
 @Data
-public class Topic {
+public class Role {
     private Integer id;
     private String name;
-
 }
