@@ -46,14 +46,14 @@ public class JwtUtils {
                 .claims(extraClaims)
                 .subject(userDetails.getUsername())
                 .issuedAt(new Date(System.currentTimeMillis()))
-                //.expiration(new Date(System.currentTimeMillis() + expiration))
+                .expiration(new Date(System.currentTimeMillis() + expiration))
                 .signWith(getSignInKey())
                 .compact();
     }
 
     public static boolean isTokenValid(String token, UserDetails userDetails) {
         final String username = extractUsername(token);
-        return (username.equals(userDetails.getUsername())) /*&& !isTokenExpired(token)*/;
+        return (username.equals(userDetails.getUsername())) && !isTokenExpired(token);
     }
 
     private static boolean isTokenExpired(String token) {

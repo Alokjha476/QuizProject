@@ -1,6 +1,7 @@
 package com.quiz.controller;
 
 import com.quiz.entity.User;
+import com.quiz.exceptions.ServiceException;
 import com.quiz.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,6 +35,7 @@ public class UserController {
 
     @PutMapping("/update")
     public ResponseEntity<Object> updateUser(@RequestBody User user) {
+
         User user1 = userService.updateUser(user);
         return new ResponseEntity<>(user1, HttpStatus.OK);
     }
