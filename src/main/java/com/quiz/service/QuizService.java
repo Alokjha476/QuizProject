@@ -27,4 +27,9 @@ public class QuizService {
         return quizRepository.getAllQuiz();
     }
 
+    public void updateQuiz(Quiz quiz){
+        quizRepository.updateQuiz(quiz);
+
+    }
+
 }

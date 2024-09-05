@@ -31,6 +31,11 @@ public class QuizController {
         List<Quiz> quizList = quizService.getAllQuiz();
         return new ResponseEntity<>(quizList, HttpStatus.OK);
     }
+    @PutMapping("/update")
+    public ResponseEntity<Object> update(@RequestBody Quiz quiz){
+        quizService.updateQuiz(quiz);
+        return new ResponseEntity<>("Quiz updated" , HttpStatus.OK);
+    }
 
 
 
