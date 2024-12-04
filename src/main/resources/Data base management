@@ -1,0 +1,36 @@
+CREATE DATABASE quiz_management;
+USE quiz_management;
+CREATE TABLE User (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(255),
+    password VARCHAR(255),
+    roles VARCHAR(255)
+);
+CREATE TABLE Topic (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255)
+);
+CREATE TABLE Quiz (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(255),
+    topicId INT,
+    maxScore INT,
+    FOREIGN KEY (topicId) REFERENCES Topic(id) ON DELETE SET NULL
+);
+
+CREATE TABLE Question (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    question TEXT ,
+    opt1 VARCHAR(255) ,
+    opt2 VARCHAR(255),
+    opt3 VARCHAR(255) ,
+    opt4 VARCHAR(255) ,
+    correctAnswer VARCHAR(255)
+);
+CREATE TABLE QuizQuestion (
+    quizId INT,
+    questionId INT,
+    PRIMARY KEY (quizId, questionId),
+    FOREIGN KEY (quizId) REFERENCES Quiz(id) ON DELETE CASCADE,
+    FOREIGN KEY (questionId) REFERENCES Question(id) ON DELETE CASCADE
+);

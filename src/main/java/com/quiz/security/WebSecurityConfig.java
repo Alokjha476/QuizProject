@@ -49,9 +49,9 @@ public class WebSecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(AbstractHttpConfigurer::disable)
+
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.GET, "/quiz/get**", "/topic/get**").permitAll()
-
                         .requestMatchers("/login").permitAll()
                         .requestMatchers("/user/add", "/user/get/username", "/questions/by-quizId").hasAnyRole("ADMIN", "USER")
                         .requestMatchers(HttpMethod.POST, "/topic/add", "/quiz/add", "/question/add", "/questions/add", "/user/progress/add","/user/progress/get").hasRole("ADMIN")
